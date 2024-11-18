@@ -1,0 +1,16 @@
+
+<div class="col-3">
+    <div class="card rounded-5 my-2 overflow-hidden" style="min-height: 300px;">
+        <img src="{{ card_img }}" class="card-img-top " style="min-height: 130px; max-height: 130px;" alt="...">
+        <div class="card-body"> 
+            <div class="d-flex-row" style="min-height: 100px;">
+                <h5 class="card-title"> {{ card_title }} </h5>
+                <p class="card-text text-truncate">{{ card_desc }}</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <a href=" {{ card_url }} " class="btn btn-primary rounded-pill">{{ card_btn_name }}</a>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+{% extends 'professor/presets/layout.html' %}
+
+{% load static %}
+
+{% block title %} Formulário Atividade {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="my-5">
+            <h3 class="mb-3">Atividade</h3>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.dt_entrega }}
+                </div>
+                <div class="mb-3">
+                    {{ form.titulo }}
+                </div>
+                <div class="mb-3">
+                    {{ form.descricao }}
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="{% url 'professor:atividades' id_turma %}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

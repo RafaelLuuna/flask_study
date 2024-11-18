@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<header>
+    <img class="header-background" src="{% static 'img/common/header-gradient.png' %}" alt="">
+    <div class="container d-flex justify-content-between p-0">
+        <div class="d-flex align-items-center">
+            <img Class="" src="{% static 'img/common/logo.png' %}" alt="Logo"/>
+        </div>
+        <div class="d-flex align-items-center">
+            {% if user.permissao == "admin" %}<a class="nav-link text-white me-5 d-none d-md-block" href="{% url 'aluno:home' %}">Visão do aluno</a>{% endif %}
+            <a class="nav-link text-white me-5 d-none d-md-block" href="{% url 'professor:home' %}">Home</a>
+            <h2 class="my-0 me-5 text-white">Olá, {{ user.username }}</h2>
+            <div class="d-none d-sm-flex">
+                <div Class="d-flex align-items-center">
+                    <img class="" src="{% static 'img/common/profile.png' %}" alt="Profile picture"/>
+                </div>
+                <div class="">
+                    <img src="{% static 'img/common/bell.png' %}" alt="Profile picture">
+                    <p class="notification-count">3</p>
+                </div>
+            </div>
+            <a class="nav-link text-decoration-underline text-white-50" href="/logout">
+                <img src="{% static 'img/common/log-out.png' %}" alt="Profile picture">
+            </a>
+        </div>
+    </div>
+</header>
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+
+

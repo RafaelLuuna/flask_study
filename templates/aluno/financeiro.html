@@ -1,0 +1,96 @@
+{% extends 'aluno/presets/layout.html' %}
+{% load static %}
+
+
+{% block title %}Financeiro{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <section id="title">
+        <div class="row mt-4 mb-2">
+            <div class="col-12">
+                <h1>Financeiro</h1>
+            </div>
+        </div>
+
+    </section>
+        
+    <section id="menu">
+        <div class="row my-2 px-2">
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:financeiro' %}">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    Tudo
+                </div>
+            </a>
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:financeiro' %}?status=pago">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    Pago
+                </div>
+            </a>
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:financeiro' %}?status=em aberto">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    Em aberto
+                </div>
+            </a>
+        </div>
+        
+    </section>
+    
+    <section id="sec-notas-aluno">
+        <div class="row">
+            {% if not boletos %}
+        
+            <div class="fs-5 py-5 text-center">Não há pendências financeiras para você.</div>
+
+            {% else %}
+
+
+
+            <div class="row overflow-auto mb-3" style="max-height: 50vh;">
+                <table class="table table-striped table-bordered border-black">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">Parcela</th>
+                            <th scope="col">Vencimento</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for boleto in boletos %}
+                        <tr>
+                            <td scope="row">{{ boleto.id }}</td>
+                            <td> {{ boleto.vencimento }}</td>
+                            <td> {{ boleto.valor }} </td>
+                            <td> {{ boleto.status }} </td>
+                        </tr>
+                        
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            {% endif %}
+
+
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'aluno:home' %}" class="text-decoration-none">
+                        <div class="btn bg-secondary rounded-pill text-white">
+                            Voltar para a home
+                        </div>
+                    </a>
+    
+                </div>
+            </div>
+
+
+    </section>
+    
+
+
+</div>
+
+
+{% endblock %}

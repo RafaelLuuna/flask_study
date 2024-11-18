@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} Teste upload {% endblock %}
+
+{% block content %}
+
+<form class="d-flex-column" action="{{ url_for('upload_files') }}" method="POST">
+    <input name="file" type="file" enctype="multipart/form-data">
+    <input type="submit">
+</form>
+
+
+{% endblock %}

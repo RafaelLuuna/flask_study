@@ -1,0 +1,210 @@
+{% extends 'aluno/presets/layout.html' %}
+{% load static %}
+
+
+{% block title %}Área do aluno{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <section id="menu">
+        <div class="row my-5 px-2">
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:disciplinas' %}">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    MINHAS MATÉRIAS
+                </div>
+            </a>
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:cronograma' %}">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    CRONOGRAMA DE AULAS
+                </div>
+            </a>
+            <a class="col-12 col-lg-4 text-white text-decoration-none px-5 my-2" href="{% url 'aluno:financeiro' %}">
+                <div class="bg-body-secondary p-3 rounded-pill text-center">
+                    FINANCEIRO
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+    <section id="disciplinas">
+        <div class="row mt-4 mb-5">
+            <div class="col-12">
+                <h1>Minhas Matérias</h1>
+            </div>
+        </div>
+        
+
+        
+        <div class="row d-none d-lg-block">
+            
+            <div id="carousel-disciplinas-4" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active px-5">
+                        <div class="row">
+                            {% for disciplina in disciplinas %}
+                            <div class="col-3">
+                                <div class="card rounded-5 my-2 overflow-hidden" style="min-height: 300px;">
+                                    <img src="{% static disciplina.capa %}" class="card-img-top " style="min-height: 130px; max-height: 130px;" alt="...">
+                                    <div class="card-body"> 
+                                        <div class="d-flex-row" style="min-height: 100px;">
+                                            <h5 class="card-title"> {{ disciplina.nome_disciplina }} </h5>
+                                            <p class="card-text text-truncate">{{ curso.nome_curso }}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <a href=" {% url 'aluno:atividades' disciplina.pk %} " class="btn btn-primary rounded-pill">Ver matéria</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if forloop.counter|divisibleby:"4" %} 
+                        </div> 
+                    </div>
+                    
+                    <div class="carousel-item px-5">
+                        <div class="row">
+                            {% endif %}
+                            
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex">
+                        <button class="carousel-control-prev bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-4" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-4" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="row d-none d-sm-block d-lg-none">
+            
+            <div id="carousel-disciplinas-2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active px-5">
+                        <div class="row">
+                            {% for disciplina in disciplinas %}
+                            <div class="col-6">
+                                <div class="card rounded-5 my-2 overflow-hidden" style="min-height: 300px;">
+                                    <img src="{% static disciplina.capa %}" class="card-img-top " style="min-height: 130px; max-height: 130px;" alt="...">
+                                    <div class="card-body"> 
+                                        <div class="d-flex-row" style="min-height: 100px;">
+                                            <h5 class="card-title"> {{ disciplina.nome_disciplina }} </h5>
+                                            <p class="card-text text-truncate">{{ curso.nome_curso }}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <a href=" {% url 'aluno:atividades' disciplina.pk %} " class="btn btn-primary rounded-pill">Ver matéria</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if forloop.counter|divisibleby:"2" %} 
+                        </div> 
+                    </div>
+                    
+                    <div class="carousel-item px-5">
+                        <div class="row">
+                            {% endif %}
+                            
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex">
+                        <button class="carousel-control-prev bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-2" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-2" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div class="row d-block d-sm-none">
+            
+            <div id="carousel-disciplinas-1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active px-5">
+                        <div class="row">
+                            {% for disciplina in disciplinas %}
+                            <div class="col-12">
+                                <div class="card rounded-5 my-2 overflow-hidden" style="min-height: 300px;">
+                                    <img src="{% static disciplina.capa %}" class="card-img-top " style="min-height: 130px; max-height: 130px;" alt="...">
+                                    <div class="card-body"> 
+                                        <div class="d-flex-row" style="min-height: 100px;">
+                                            <h5 class="card-title"> {{ disciplina.nome_disciplina }} </h5>
+                                            <p class="card-text text-truncate">{{ curso.nome_curso }}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <a href=" {% url 'aluno:atividades' disciplina.pk %} " class="btn btn-primary rounded-pill">Ver matéria</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if forloop.counter|divisibleby:"1" %} 
+                        </div> 
+                    </div>
+                    
+                    <div class="carousel-item px-5">
+                        <div class="row">
+                            {% endif %}
+                            
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex">
+                        <button class="carousel-control-prev bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-1" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next bg-black w-0" type="button" data-bs-target="#carousel-disciplinas-1" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+              
+
+
+</div>
+
+
+{% endblock %}

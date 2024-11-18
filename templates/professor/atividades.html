@@ -1,0 +1,74 @@
+{% extends 'professor/presets/layout.html' %}
+
+{% load static %}
+
+{% block title %} Atividades - {{ turma.nome_turma }} {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <section id="sec-notas-aluno">
+        <div class="row mt-4 mb-5 pe-3">
+            <div class="d-flex justify-content-between">
+                <h3>Atividades - {{ turma.turma.nome_turma }} </h3>
+                <a href="{% url 'professor:adicionar_atividade' turma.turma.pk %}">
+                    <div class="btn btn-primary">
+                        Adicionar
+
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            {% if not atividades %}
+        
+            <div class="fs-5 py-5 text-center">Não há atividades cadastradas para a esta turma.</div>
+
+            {% else %}
+            <div class="row">
+                <table class="table table-striped table-bordered border-black">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">Data de entrega</td>
+                            <th scope="col">Ações</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for atividade in atividades %}
+                        <tr>
+                            <td scope="row">{{ atividade.titulo }}</td>
+                            <td> {{ atividade.descricao }} </td>
+                            <td> {{ atividade.dt_entrega|date:"d/m/Y" }} </td>
+                            <td>
+                                <a href="{% url 'professor:notas_atividade' turma.turma.pk atividade.id %}">Atribuir nota</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+            {% endif %}
+
+
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'professor:turma' id_turma %}" class="text-decoration-none">
+                        <div class="btn bg-secondary rounded-pill text-white">
+                            Voltar
+                        </div>
+                    </a>
+    
+                </div>
+            </div>
+
+
+    </section>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'aluno/presets/layout.html' %}
+{% load static %}
+
+
+{% block title %}Minhas matérias{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <section id="disciplinas">
+        <div class="row mt-4">
+            <div class="col-12 col-lg-6">
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <h1>Matérias</h1>
+                    </div>
+                </div>
+                <div class="row overflow-auto px-3" style="max-height: 75vh;">
+                    {% for disciplina in disciplinas %}
+                    <div class="col-12 my-1">
+                        <a href="{% url 'aluno:atividades' disciplina.pk %}" class="text-decoration-none">
+                            <div class="bg-primary rounded-pill d-flex align-items-center justify-content-center" style="height: 60px;">
+                                <div class="text-white text-center text-truncate fs-3">
+                                    {{ disciplina.nome_disciplina }}
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end px-4">
+                                <p class="text-align-end text-black">Detalhes</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>Notas</h1>
+                    </div>
+                    <div class="row overflow-auto px-3" style="max-height: 75vh; min-height: 75vh;">
+                        {% for nota in notas %}
+                        <div class="col-6">
+                            <div class="text-truncate">{{ nota.disciplina.nome_disciplina }}</div>
+                            <a href="{% url 'aluno:atividades' nota.disciplina.pk %}" class="text-decoration-none">
+                                <div class="d-flex justify-content-center align-items-center bg-secondary rounded-4 h-75">
+                                    <div class=" text-white fs-1">
+                                        {{ nota.nota|floatformat:2 }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+</div>
+
+
+{% endblock %}

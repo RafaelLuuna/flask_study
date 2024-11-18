@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row g-0 h-100">
+    <div class="col bg-light px-3">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="d-flex flex-column">
+                <div class="text-center my-3">
+                    <h1>403</h1>
+                </div>
+                <div class="text-center my-3">
+                    <h3>Você não possui permissão para visualizar esta página.</h3>
+                </div>
+                <div class="text-center my-3">
+                    <a href="{% url 'authentication:index' %}" class="btn btn-primary">Ir para Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

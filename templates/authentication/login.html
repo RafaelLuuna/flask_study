@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} Login | EnsinoApp {% endblock %}
+
+{% block content %}
+
+<div class="row g-0 h-100">
+    <div class="col-lg-5 px-3">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="col-7 col-lg-10 text-center">
+                <div class="mb-5 text-secondary">
+                    <h3>Bem vindo de volta!</h3>
+                </div>
+                <div class="mb-5">
+                    <h3>LOGIN</h3>
+                </div>
+                    <form method="post" action="">
+
+                            <div class="alert alert-danger">
+                            </div>
+                        
+                        <div class="form-group mb-3">
+                                <div class="alert alert-danger">
+                                </div>
+                        </div>
+                        <div class="form-group mb-3">
+                                <div class="alert alert-danger">
+                                </div>
+                        </div>
+                        <div class="mb-3">
+                            <a href="#">Esqueci minha senha</a>
+                        </div>
+                        <div class="mb-5">
+                            <button type="submit" class="btn btn-primary w-100 rounded-pill">Entrar</button>
+                            <input type="hidden" name="next" value="">
+                        </div>
+                    </form>
+                    <div class="mb-3">
+                        <p> Não tem conta? <span><a href="#" class="">Cadastre-se aqui</a></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 d-none d-lg-block">
+            <div class="vh-100 d-flex justify-content-center align-items-center">
+                <img src="/static/img/login/login-pc-logotipo.png" class="login-pc-logotipo" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<img src="/static/img/login/login-pc-logotipo.png" class="login-pc-logotipo mini d-block d-lg-none" alt="...">
+
+<img src="/static/img/login/login-element1.png" class="login-element1 d-none d-sm-block" alt="...">
+<img src="/static/img/login/login-element2.png" class="login-element2 d-none d-sm-block" alt="...">
+<img src="/static/img/login/login-element1.png" class="login-element1 mini d-block d-sm-none" alt="...">
+<img src="/static/img/login/login-element2.png" class="login-element2 mini d-block d-sm-none" alt="...">
+
+<img src="/static/img/login/login-bg-gradient.png" class="login-bg-gradient d-none d-lg-block" alt="...">
+
+{% endblock %}
